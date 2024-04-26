@@ -1,0 +1,26 @@
+services:
+  mysqldb:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      - mynetwork
+    environment:
+      MYSQL_DATABASE: SkiStationDB
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+  ski-project:
+    build: .
+    restart: always
+    ports:
+      - 9090:9090
+    networks:
+      - mynetwork
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/SkiStationDB?allowPublicKeyRetrieval=true
+    depends_on:
+      - mysqldb
+
+networks:
+  mynetwork:
