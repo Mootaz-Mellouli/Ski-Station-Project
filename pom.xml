@@ -97,6 +97,7 @@
             <properties>
                 <env>src/main/resources/dev</env>
                 <maven.test.skip>true</maven.test.skip>
+                <activatedProperties>dev</activatedProperties>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -106,6 +107,7 @@
             <id>test</id>
             <properties>
                 <env>src/main/resources/test</env>
+                <activatedProperties>test</activatedProperties>
             </properties>
             <dependencies>
                 <dependency>
@@ -120,6 +122,7 @@
             <properties>
                 <env>src/main/resources/prod</env>
                 <maven.test.skip>true</maven.test.skip>
+                <activatedProperties>prod</activatedProperties>
             </properties>
         </profile>
     </profiles>
